@@ -1,10 +1,17 @@
 <?php
-if (isset($_POST['submit'])){
-$name=$_POST['name'];
-$mailFrom=$_POST['email'];
-$message=$_POST['message'];
-$mailTo="aritraghosh625@gmail.com";
-$headers="From: ".$mailFrom;
-$txt="You have received an email from".$name.".\n\n".$message;mail($mailTo,$subject,$txt,$headers);
-header("Location:index.php?mailsend");
+//get data from form  
+
+$name = $_POST['name'];
+$email= $_POST['email'];
+$message= $_POST['message'];
+$to = "aritraghosh625@gmail.com";
+$subject = "Mail From website";
+$txt ="Name = ". $name . "\r\n  Email = " . $email . "\r\n Message =" . $message;
+$headers = "From: noreply@yoursite.com" . "\r\n" .
+"CC: somebodyelse@example.com";
+if($email!=NULL){
+    mail($to,$subject,$txt,$headers);
 }
+//redirect
+header("Location:index.html");
+?>
